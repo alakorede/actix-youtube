@@ -53,7 +53,7 @@ async fn create_user(app_state: web::Data<AppState>, user: web:: Json<RegisterUs
 }
 
 #[put("/users/{id}")]
-async fn update_user(app_state: web::Data<AppState>, user: web::Json<UdpateUser>, id: web:: Path<i32>) -> impl Responder {
+async fn update_user(app_state: web::Data<AppState>, user: web::Json<UpdateUser>, id: web:: Path<i32>) -> impl Responder {
     let hashed = hash(&user.password, DEFAULT_COST).expect("Failed to hash password.");
 
     if !(hashed != user.password) {
